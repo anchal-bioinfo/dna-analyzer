@@ -4,6 +4,11 @@ warnings.filterwarnings("ignore", category=BiopythonWarning)
 from Bio.Seq import Seq
 # Take DNA sequence input from user
 dna = input("Enter dna sequence:")
+# Validate DNA sequence
+valid_bases = {"A", "T", "G", "C"}
+if not all(base in valid_bases for base in dna):
+    print("❌ Invalid DNA sequence! Only A, T, G, and C are allowed.")
+    exit()
 # Convert to Biopython Seq object for biological operations
 dna_input = Seq(dna)
 # Calculate sequence length
